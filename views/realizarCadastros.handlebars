@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/style.css">
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.bundle.js"></script>
+<title>Realizar Cadastros</title>
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="menu">Menu</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <div class="hstack gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="realizarCadastros"><strong>Cadastro</strong></a>
+                            </li>
+                            <div class="vr"></div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="alocacaoDeSalas">Alocação de Salas</a>
+                            </li>
+                            <div class="vr"></div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="relatorios">Relatório</a>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="meio">
+            <button class="btn btn-warning" id="botao10" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+                Realizar Cadastros
+            </button>
+        </div>
+
+        <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="staticBackdropLabel">Cadastros</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <div>
+                Escolha o que você quer cadastrar.
+              </div>
+              <div class="dropdown mt-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    Cadastro
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="cadastroDeSalas">Cadastro de Salas</a></li>
+                    <li><a class="dropdown-item" href="cadastroDeAlunos">Cadastro de Alunos</a></li>
+                    <li><a class="dropdown-item" href="cadastroDeCursos">Cadastro de Cursos</a></li>
+                    <li><a class="dropdown-item" href="cadastroDeInstrutores">Cadastro de Instrutores</a></li>
+                    <li><a class="dropdown-item" href="cadastroDeTurmas">Cadastro de Turmas</a></li>
+                </ul>
+            </div>
+
+            </div>
+          </div>
+    </main>
+    <footer>
+        <div class="fixo bg-body-tertiary">
+            <h3>Desenvolvido por Mark Treinamentos</h3>
+        </div>
+    </footer>

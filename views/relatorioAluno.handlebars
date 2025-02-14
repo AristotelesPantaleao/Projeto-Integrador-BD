@@ -1,0 +1,58 @@
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <title>Card de Alunos</title>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="menu">Menu</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <div class="hstack gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="realizarCadastros">Cadastro</a>
+                            </li>
+                            <div class="vr"></div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="alocacaoDeSalas">Alocação de Salas</a>
+                            </li>
+                            <div class="vr"></div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="relatorios">Relatório</a>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+  
+  
+        <div class="container-table-exibicao">
+            <h1>Alunos Cadastrados</h1>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id do Aluno:</th>
+                        <th scope="col">Nome do Aluno: </th>
+                        <th scope="col">Email do Aluno: </th>
+                        <th scope="col">Telefone do Aluno: </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td>{{this.id_aluno}}</td>
+                        <td>{{this.nomeAluno}}</td>
+                        <td>{{this.emailAluno}}</td>
+                        <td>{{this.telefoneAluno}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+ 

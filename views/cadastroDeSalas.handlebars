@@ -1,0 +1,124 @@
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <title>Cadastro de Salas</title>
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="menu">Menu</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <div class="hstack gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="realizarCadastros">Cadastro</a>
+                            </li>
+                            <div class="vr"></div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="alocacaoDeSalas">Alocação de Salas</a>
+                            </li>
+                            <div class="vr"></div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="relatorios">Relatório</a>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container3">
+            <button type="button" id="botao2" class="btn btn-warning" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Cadastro de Salas
+            </button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content modal-dialog-scrollable" id="meuModal">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de Salas</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form id="formulario">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="localSala" class="form-label">Local da Sala:</label>
+                                    <input type="text" class="form-control" id="localSala" placeholder="Local da Sala"
+                                        required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="capacidadeAluno" class="form-label">Capacidade de alunos:</label>
+                                    <input type="number" min="1" class="form-control" id="capacidadeAluno"
+                                        placeholder="Capacidade de alunos" required>
+                                </div>
+
+                                <div class="form-check">
+                                    <label>Recursos da sala:</label><br>
+                                    <input class="form-check-input" type="checkbox" value="" id="flexComputadores">
+                                    <label class="form-check-label" for="flexComputadores" id="flexComputadores">
+                                        Computadores
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexProjetor">
+                                    <label class="form-check-label" for="flexProjetor">
+                                        Projetor
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexLousaInterativa">
+                                    <label class="form-check-label" for="flexLousaInterativa">
+                                        Lousa Interativa
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexMaterial">
+                                    <label class="form-check-label" for="flexMaterial">
+                                        Material (lápis, canetas, borrachas, papel)
+                                    </label>
+                                </div>
+                                <br>
+                                <div class="form-check">
+                                    <label>Área para Coffee Break?</label><br>
+                                    <input class="form-check-input" type="radio" name="flexRadioCoffee"
+                                        id="flexRadioSim" required>
+                                    <label class="form-check-label" for="flexRadioSim">
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioCoffee"
+                                        id="flexRadioNao" required>
+                                    <label class="form-check-label" for="flexRadioNao">
+                                        Não
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <div class="fixo bg-body-tertiary">
+            <h3>Desenvolvido por Mark Treinamentos</h3>
+        </div>
+    </footer>

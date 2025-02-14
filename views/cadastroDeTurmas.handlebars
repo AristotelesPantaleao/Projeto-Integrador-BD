@@ -1,0 +1,91 @@
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <title>Cadastro de Turmas</title>
+
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="menu">Menu</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <div class="hstack gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="realizarCadastros">Cadastro</a>
+                            </li>
+                            <div class="vr"></div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="alocacaoDeSalas">Alocação de Salas</a>
+                            </li>
+                            <div class="vr"></div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="relatorios">Relatório</a>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container3">
+            <button type="button" id="botao2" class="btn btn-warning" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Cadastro de Turmas
+            </button>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content modal-dialog-scrollable">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de Turmas</h1>
+                        </div>
+                        <form id="formulario" method="post">
+                            <div class="modal-body" id="modal-body">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Selecione o Curso:</label>
+                                    <select class="form-select">
+                                        {{#each data}}
+                                        <option name="nomeCurso" id="nomeCurso" value="{{this.id_curso}}">{{this.nomeCurso}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Selecione os Alunos:</label>
+                                    <select class="form-select" name="nomeAluno[]" id="nomeAluno">
+                                        {{#each data}}
+                                        <option value="{{this.id_aluno}}">{{this.nomeAluno}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Selecione os Instrutores:</label>
+                                    <select class="form-select" name="nomeInstrutor" id="nomeInstrutor">
+                                        {{#each data}}
+                                        <option value="{{this.id_instrutor}}">{{this.nomeInstrutor}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <div class="fixo bg-body-tertiary">
+            <h3>Desenvolvido por Mark Treinamentos</h3>
+        </div>
+    </footer>
