@@ -12,6 +12,7 @@ app.use(
     })
 )
 
+
 app.use(express.json()) // Para capturar o body em JSON.
 
 app.engine("handlebars", exphbs.engine()) // renderizar o controle do servidor de aplicação para o handlebars
@@ -54,8 +55,9 @@ app.get("/cadastroDeSalas",(req,res) =>{
 })
 
 app.get("/cadastroDeTurmas",(req,res) => {
+    const query = 'SELECT nomeCurso, nomeAluno, nomeInstrutor FROM cadastro_Cursos LEFT JOIN cadastro_Alunos ON cadastro_Cursos.id_curso = cadastro_Alunos.id_aluno LEFT JOIN cadastro_Instrutores ON cadastro_Cursos.id_curso = cadastro_Instrutores.id_instrutor'
 
-    const query = "SELECT c.nomeCurso, a.nomeAluno, i.nomeInstrutor FROM cadastro_Cursos c INNER JOIN cadastro_Alunos a ON c.id_curso = a.id_aluno INNER JOIN cadastro_Instrutores i ON a.id_aluno = i.id_instrutor;"
+    console.log(query)
 
     connection.query(query,(err,results) => {
         if(err){
@@ -68,6 +70,7 @@ app.get("/cadastroDeTurmas",(req,res) => {
     })
 
 })
+
 
 app.get("/relatorios",(req,res) => {
     res.render("relatorios")
@@ -120,7 +123,18 @@ app.get("/relatorioSala",(req,res) =>{
 })
 
 app.get("/relatorioTurma",(req,res) => {
-    res.render("relatorioTurma")
+
+    const query = "SELECT * FROM cadastro_Turmas"
+
+    connection.query(query,(err,results) => {
+        if(err){
+            console.error("Erro ao executar a query: ",err.stack)
+            res.status(500).send("Erro ao buscar dados")
+            return
+        }
+
+        res.render('relatorioTurma', { data: results })
+    })
 })
 
 app.get("/relatorioGeral",(req,res) => {
@@ -134,7 +148,7 @@ app.get("/alocacaoDeSalas",(req,res) =>{
 const connection = mysql2.createConnection({
     host: "localhost",
     user: "root",
-    password: "Sen@iDev77!.",
+    password: "123456",
     database: "projeto_integrador"
 })
 
@@ -239,6 +253,25 @@ app.post("/cadastroDeInstrutores",(req,res) => {
 
 app.post("/cadastroDeTurmas",(req,res) => {
     
+    const nome_Curso = req.body.nomeCurso
+    const nome_Aluno = req.body.nomeAluno
+    const nome_Instrutor = req.body.nomeInstrutor
+
+    const sql = `INSERT INTO cadastro_Turmas(id_curso,id_aluno,id_instrutor) VALUES((SELECT id_curso FROM cadastro_Cursos WHERE nomeCurso = '${nome_Curso}'), (SELECT id_aluno FROM cadastro_Alunos WHERE nomeAluno = '${nome_Aluno}'), (SELECT id_instrutor FROM cadastro_Instrutores WHERE nomeInstrutor = '${nome_Instrutor}'))`
+
+    console.log(req.body)
+    console.log(nome_Curso)
+    console.log(nome_Aluno)
+    console.log(nome_Instrutor)
+    console.log(sql)
+
+    connection.query(sql,function(err){
+        if(err){
+            console.log(err)
+        }else{
+            res.redirect("/realizarCadastros")
+        }
+    })
 })
 
 // Execução da conexão

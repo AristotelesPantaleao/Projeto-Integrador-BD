@@ -33,6 +33,26 @@
         </nav>
     </header>
 
-    <main>
-        <div id="cardsContainer"></div>
-    </main>
+<div class="container-table-exibicao">
+    <h1>Turmas Cadastradas</h1>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id da Turma:</th>
+                    <th scope="col">Id do Curso: </th>
+                    <th scope="col">Id do Aluno: </th>
+                    <th scope="col">Id do Instrutor: </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each data}}
+                <tr>
+                    <td>{{this.id_turma}}</td>
+                    <td>{{this.id_curso}}</td>
+                    <td>{{this.id_aluno}}</td>
+                    <td>{{this.id_instrutor}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+</div>

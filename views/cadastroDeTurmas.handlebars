@@ -1,9 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/style.css">
     <script src="/js/bootstrap.min.js"></script>
     <title>Cadastro de Turmas</title>
+</head>
 
+<body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -50,17 +57,19 @@
                             <div class="modal-body" id="modal-body">
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Selecione o Curso:</label>
-                                    <select class="form-select">
+                                    <select class="form-select" name="nomeCurso" id="nomeCurso">
                                         {{#each data}}
-                                        <option name="nomeCurso" id="nomeCurso" value="{{this.id_curso}}">{{this.nomeCurso}}</option>
+                                        <option value="{{this.nomeCurso}}">{{this.nomeCurso}}</option>
                                         {{/each}}
                                     </select>
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Selecione os Alunos:</label>
-                                    <select class="form-select" name="nomeAluno[]" id="nomeAluno">
+                                    <select class="form-select" name="nomeAluno" id="nomeAluno">
                                         {{#each data}}
-                                        <option value="{{this.id_aluno}}">{{this.nomeAluno}}</option>
+                                        {{#if this.nomeAluno}}
+                                        <option value="{{this.nomeAluno}}">{{this.nomeAluno}}</option>
+                                        {{/if}}
                                         {{/each}}
                                     </select>
                                 </div>
@@ -68,7 +77,9 @@
                                     <label for="exampleFormControlInput1" class="form-label">Selecione os Instrutores:</label>
                                     <select class="form-select" name="nomeInstrutor" id="nomeInstrutor">
                                         {{#each data}}
-                                        <option value="{{this.id_instrutor}}">{{this.nomeInstrutor}}</option>
+                                        {{#if this.nomeInstrutor}}
+                                        <option value="{{this.nomeInstrutor}}">{{this.nomeInstrutor}}</option>
+                                        {{/if}}
                                         {{/each}}
                                     </select>
                                 </div>
@@ -89,3 +100,6 @@
             <h3>Desenvolvido por Mark Treinamentos</h3>
         </div>
     </footer>
+</body>
+
+</html>
