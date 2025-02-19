@@ -36,3 +36,35 @@
     <main>
         <div id="cardsContainer"></div>
     </main>
+
+      <div class="container-table-exibicao">
+            <h1>Salas Cadastrados</h1>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Id da Sala:</th>
+                        <th scope="col">Local da Sala: </th>
+                        <th scope="col">Capacidade de Alunos: </th>
+                        <th scope="col">Computadores: </th>
+                        <th scope="col">Projetor:</th>
+                        <th scope="col">Lousa Interativa:</th>
+                        <th scope="col">Material:</th>
+                        <th scope="col">Coffee Break:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td>{{this.id_salas}}</td>
+                        <td>{{this.localSala}}</td>
+                        <td>{{this.capacidadeAluno}}</td>
+                        <td>{{this.flexComputadores}}</td>
+                        <td>{{this.flexProjetor}}</td>
+                        <td>{{this.flexLousaInterativa}}</td>
+                        <td>{{this.flexMaterial}}</td>
+                        <td>{{this.coffee_break}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>

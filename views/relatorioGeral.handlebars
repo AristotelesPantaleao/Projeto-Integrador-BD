@@ -30,3 +30,27 @@
                 </div>
             </div>
         </nav>
+
+<div class="container-table-exibicao">
+    {{#each tabelas}}
+    <h2>{{@key}}</h2>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                {{#each this.[0]}}
+                    <th>{{@key}}</th>
+                {{/each}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each this}}
+                <tr>
+                    {{#each this}}
+                        <td>{{this}}</td>
+                    {{/each}}
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+{{/each}}
+</div>

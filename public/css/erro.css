@@ -1,0 +1,11 @@
+@media(min-width: 912px) AND (max-width: 1024px){
+    h5{
+        font-size: 2.25rem;
+    }
+    p{
+        font-size: 2rem;
+    }
+    a{
+        font-size: 1.75rem;
+    }
+}

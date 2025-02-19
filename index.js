@@ -12,7 +12,7 @@ app.use(
     })
 )
 
-
+app.use(express.urlencoded({ extended: true }));//**************** */
 app.use(express.json()) // Para capturar o body em JSON.
 
 app.engine("handlebars", exphbs.engine()) // renderizar o controle do servidor de aplicação para o handlebars
@@ -118,17 +118,34 @@ app.get("/relatorioInstrutor",(req,res) => {
     })
 })
 
-app.get("/relatorioSala",(req,res) =>{
-    res.render("relatorioSala")
-})
+//  ****************
 
-app.get("/relatorioTurma",(req,res) => {
+app.get("/relatorioSala",(req,res) => {
 
-    const query = "SELECT * FROM cadastro_Turmas"
+    const query = "SELECT * FROM cadastro_Salas"
 
     connection.query(query,(err,results) => {
         if(err){
             console.error("Erro ao executar a query: ",err.stack)
+            res.status(500).send("Erro ao buscar dados")
+            return
+        }
+
+        res.render('relatorioSala', { data: results })
+    })
+})
+
+
+//  ************
+
+
+app.get("/relatorioTurma", (req, res) => {
+
+    const query = "SELECT nomeCurso, nomeAluno, nomeInstrutor FROM cadastro_Turmas ct, cadastro_Cursos cc, cadastro_Alunos ca, cadastro_Instrutores ci WHERE ct.id_turma = cc.id_curso AND ct.id_turma = ca.id_aluno AND ct.id_turma = ci.id_instrutor"
+
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.error("Erro ao executar a query: ", err.stack)
             res.status(500).send("Erro ao buscar dados")
             return
         }
@@ -144,6 +161,23 @@ app.get("/relatorioGeral",(req,res) => {
 app.get("/alocacaoDeSalas",(req,res) =>{
     res.render("alocacaoDeSalas")
 })
+
+app.get("/erroCadastro",(req,res) => {
+    res.render('erroCadastro')
+})
+
+app.get('/erroCadastroAluno',(req,res) => {
+    res.render('erroCadastroAluno')
+})
+
+app.get('/erroCadastroInstrutor',(req,res) => {
+    res.render('erroCadastroInstrutor')
+})
+
+app.get('/erroLogin',(req,res) => {
+    res.render('erroLogin')
+})
+
 // Criar conexão com o banco de dados
 const connection = mysql2.createConnection({
     host: "localhost",
@@ -166,6 +200,7 @@ app.post("/cadastro",(req,res) => {
     connection.query(sql,function(err){
         if(err){
             console.log(err)
+            res.redirect('erroCadastro')
         }else{
             res.redirect("/")
         }
@@ -192,7 +227,7 @@ app.post("/",(req,res) => {
             if(dados){
                 res.redirect('menu')
             }else{
-                res.redirect('/')
+                res.redirect('erroLogin')
             }
         }
     })
@@ -227,6 +262,7 @@ app.post("/cadastroDeAlunos",(req,res) => {
     connection.query(sql,function(err){
         if(err){
             console.log(err)
+            res.redirect("/erroCadastroAluno")
         }else{
             res.redirect("/realizarCadastros")
         }
@@ -245,34 +281,66 @@ app.post("/cadastroDeInstrutores",(req,res) => {
     connection.query(sql,function(err){
         if(err){
             console.log(err)
+            res.redirect("/erroCadastroInstrutor")
         }else{
             res.redirect("/realizarCadastros")
         }
     })
 })
 
-app.post("/cadastroDeTurmas",(req,res) => {
-    
+app.post("/cadastroDeTurmas", (req, res) => {
+
     const nome_Curso = req.body.nomeCurso
     const nome_Aluno = req.body.nomeAluno
     const nome_Instrutor = req.body.nomeInstrutor
 
     const sql = `INSERT INTO cadastro_Turmas(id_curso,id_aluno,id_instrutor) VALUES((SELECT id_curso FROM cadastro_Cursos WHERE nomeCurso = '${nome_Curso}'), (SELECT id_aluno FROM cadastro_Alunos WHERE nomeAluno = '${nome_Aluno}'), (SELECT id_instrutor FROM cadastro_Instrutores WHERE nomeInstrutor = '${nome_Instrutor}'))`
 
-    console.log(req.body)
-    console.log(nome_Curso)
-    console.log(nome_Aluno)
-    console.log(nome_Instrutor)
     console.log(sql)
 
-    connection.query(sql,function(err){
-        if(err){
+    connection.query(sql, function (err) {
+        if (err) {
             console.log(err)
-        }else{
+        } else {
             res.redirect("/realizarCadastros")
         }
     })
 })
+
+
+app.post("/cadastroDeSalas", (req, res) => {
+    console.log(req.body); 
+
+
+    const localSala = req.body.localSala;
+    const capacidadeAluno = req.body.capacidadeAluno;
+
+    
+    const flexComputadores = req.body.flexComputadores ? 1 : 0;
+    const flexProjetor = req.body.flexProjetor ? 1 : 0;
+    const flexLousaInterativa = req.body.flexLousaInterativa ? 1 : 0;
+    const flexMaterial = req.body.flexMaterial ? 1 : 0;
+
+    //capturar o valor dos radio buttons
+    const coffee_break = req.body.flexRadioCoffee === 'Sim' ? 'Sim' : 'Não';
+
+    const sql = `
+        INSERT INTO cadastro_Salas(localSala, capacidadeAluno, flexComputadores, flexProjetor, flexLousaInterativa, flexMaterial, coffee_break) 
+        VALUES('${localSala}', '${capacidadeAluno}', '${flexComputadores}', '${flexProjetor}', '${flexLousaInterativa}', '${flexMaterial}', '${coffee_break}')
+    `;
+
+    console.log(sql);
+
+    connection.query(sql, function (err) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.redirect("/cadastroDeSalas");
+        }
+    });
+});
+
+// ***********
 
 // Execução da conexão
 // Será necessário estabelecer a conexão a cada interação com o banco

@@ -32,11 +32,10 @@
         </nav>
    
     <div class="container-table-exibicao">
-            <h1>Cursos Cadastrados</h1>
+        <h1>Cursos Cadastrados</h1>
             <table class="table table-dark table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Id do Curso:</th>
                         <th scope="col">Nome do Curso: </th>
                         <th scope="col">Descrição do Curso: </th>
                     </tr>
@@ -44,11 +43,10 @@
                 <tbody>
                     {{#each data}}
                     <tr>
-                        <td>{{this.id_curso}}</td>
                         <td>{{this.nomeCurso}}</td>
                         <td>{{this.descricaoCurso}}</td>
                     </tr>
                     {{/each}}
                 </tbody>
             </table>
-        </div>
+    </div>

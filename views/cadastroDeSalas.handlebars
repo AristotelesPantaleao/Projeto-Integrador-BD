@@ -47,63 +47,66 @@
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de Salas</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <form id="formulario">
+                        <form id="formulario" method="post" action="/cadastroDeSalas" >
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label for="localSala" class="form-label">Local da Sala:</label>
-                                    <input type="text" class="form-control" id="localSala" placeholder="Local da Sala"
+                                    <input type="text" class="form-control" id="localSala" name="localSala" placeholder="Local da Sala"
                                         required>
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="capacidadeAluno" class="form-label">Capacidade de alunos:</label>
-                                    <input type="number" min="1" class="form-control" id="capacidadeAluno"
+                                    <input type="number" min="1" class="form-control" id="capacidadeAluno" name="capacidadeAluno"
                                         placeholder="Capacidade de alunos" required>
                                 </div>
 
                                 <div class="form-check">
                                     <label>Recursos da sala:</label><br>
-                                    <input class="form-check-input" type="checkbox" value="" id="flexComputadores">
-                                    <label class="form-check-label" for="flexComputadores" id="flexComputadores">
-                                        Computadores
+                                    
+                                    <input class="form-check-input" type="checkbox" value="flexComputadores" id="flexComputadores" name="flexComputadores">
+                                    <label class="form-check-label" for="flexComputadores">
+                                    Computadores
                                     </label>
                                 </div>
+
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexProjetor">
+                                    
+                                    <input class="form-check-input" type="checkbox" value="flexProjetor" id="flexProjetor" name="flexProjetor">
                                     <label class="form-check-label" for="flexProjetor">
-                                        Projetor
+                                    Projetor
                                     </label>
                                 </div>
 
+
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexLousaInterativa">
+                                    
+                                    <input class="form-check-input" type="checkbox" value="flexLousaInterativa" id="flexLousaInterativa" name="flexLousaInterativa">
                                     <label class="form-check-label" for="flexLousaInterativa">
-                                        Lousa Interativa
+                                    Lousa Interativa
                                     </label>
                                 </div>
 
+
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexMaterial">
+                                    
+                                    <input class="form-check-input" type="checkbox" value="flexMaterial" id="flexMaterial" name="flexMaterial">
                                     <label class="form-check-label" for="flexMaterial">
-                                        Material (lápis, canetas, borrachas, papel)
+                                    Material (lápis, canetas, borrachas, papel)
                                     </label>
                                 </div>
+
                                 <br>
                                 <div class="form-check">
                                     <label>Área para Coffee Break?</label><br>
-                                    <input class="form-check-input" type="radio" name="flexRadioCoffee"
-                                        id="flexRadioSim" required>
-                                    <label class="form-check-label" for="flexRadioSim">
-                                        Sim
-                                    </label>
+                                    <input class="form-check-input" type="radio" name="flexRadioCoffee" id="flexRadioSim" value="Sim" required>
+                                    <label class="form-check-label" for="flexRadioSim">Sim</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="flexRadioCoffee"
-                                        id="flexRadioNao" required>
-                                    <label class="form-check-label" for="flexRadioNao">
-                                        Não
-                                    </label>
+                                    <input class="form-check-input" type="radio" name="flexRadioCoffee" id="flexRadioNao" value="Não" required>
+                                    <label class="form-check-label" for="flexRadioNao">Não</label>
                                 </div>
+
                             </div>
 
                             <div class="modal-footer">
