@@ -750,6 +750,36 @@ progress {
   margin-left: auto;
 }
 
+@media (min-width: 344px) AND (max-width: 359.9px){
+  .container-fluid{
+    width: 193%;
+  }
+}
+
+@media (min-width: 360px) AND (max-width: 374.9px){
+  .container-fluid{
+    width: 185%;
+  }
+}
+
+@media (min-width:375px) AND (max-width: 413.9px){
+  .container-fluid{
+    width: 177%;
+  }
+}
+
+@media (min-width:414px) AND (max-width: 429.9px){
+  .container-fluid{
+    width: 177%;
+  }
+}
+
+@media (min-width:430px) AND (max-width: 575.9px){
+  .container-fluid{
+    width: 177%;
+  }
+}
+
 @media (min-width: 576px) {
   .container-sm, .container {
     max-width: 540px;

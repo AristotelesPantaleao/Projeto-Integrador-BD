@@ -23,6 +23,10 @@
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
+                                <a class="nav-link" href="pesquisar">Pesquisar</a>
+                            </li>
+                            <div class="vr"></div>
+                            <li class="nav-item">
                                 <a class="nav-link" href="relatorios">Relatório</a>
                             </li>
                         </div>
@@ -31,3 +35,148 @@
             </div>
         </nav>
 
+<div class="container-fluid table-exibicao">
+            <h1 class="title">Alunos Cadastrados</h1>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome do Aluno: </th>
+                        <th scope="col">Email do Aluno: </th>
+                        <th scope="col">Telefone do Aluno: </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data}}
+                    <tr>
+                        <td>{{this.nomeAluno}}</td>
+                        <td>{{this.emailAluno}}</td>
+                        <td>{{this.telefoneAluno}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+</div>
+
+<div class="container-fluid table-exibicao">
+        <h1>Cursos Cadastrados</h1>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome do Curso: </th>
+                        <th scope="col">Descrição do Curso: </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data2}}
+                    <tr>
+                        <td>{{this.nomeCurso}}</td>
+                        <td>{{this.descricaoCurso}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+</div>
+
+<div class="container-fluid table-exibicao">
+            <h1>Instrutores Cadastrados</h1>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome do Instrutor: </th>
+                        <th scope="col">Email do Instrutor: </th>
+                        <th scope="col">Telefone do Instrutor: </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each data3}}
+                    <tr>
+                        <td>{{this.nomeInstrutor}}</td>
+                        <td>{{this.emailInstrutor}}</td>
+                        <td>{{this.telefoneInstrutor}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+</div>
+
+<div class="container-fluid table-exibicao">
+    <h1>Turmas Cadastradas</h1>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nome do Curso: </th>
+                    <th scope="col">Nome do Aluno: </th>
+                    <th scope="col">Nome do Instrutor: </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each data4}}
+                <tr>
+                    <td>{{this.nomeCurso}}</td>
+                    <td>{{this.nomeAluno}}</td>
+                    <td>{{this.nomeInstrutor}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+</div>
+
+<div class="container-fluid table-exibicao">
+    <h1>Salas Cadastradas</h1>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Local da Sala: </th>
+                    <th scope="col">Capacidade de Alunos: </th>
+                    <th scope="col">Computadores: </th>
+                    <th scope="col">Projetor: </th>
+                    <th scope="col">Lousa Interativa: </th>
+                    <th scope="col">Material: </th>
+                    <th scope="col">Coffe Break: </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each data5}}
+                <tr>
+                    <td>{{this.localSala}}</td>
+                    <td>{{this.capacidadeAlunos}}</td>
+                    <td>{{this.computadores}}</td>
+                    <td>{{this.projetor}}</td>
+                    <td>{{this.lousaInterativa}}</td>
+                    <td>{{this.material}}</td>
+                    <td>{{this.radio}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <h3>1 - Sim</h3>
+        <h3>0 - Não</h3>
+</div>
+
+<div class="container-fluid table-exibicao">
+    <h1>Salas Alocadas</h1>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nome da Sala: </th>
+                    <th scope="col">Nome Instrutor: </th>
+                    <th scope="col">Nome Curso: </th>
+                    <th scope="col">Data: </th>
+                    <th scope="col">Hora Inicial: </th>
+                    <th scope="col">Hora Final:</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each data6}}
+                <tr>
+                    <td>{{this.nomeSala}}</td>
+                    <td>{{this.nomeInstrutor}}</td>
+                    <td>{{this.nomeCurso}}</td>
+                    <td>{{this.anoMesDia}}</td>
+                    <td>{{this.horaInicial}}</td>
+                    <td>{{this.horaFinal}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+</div>

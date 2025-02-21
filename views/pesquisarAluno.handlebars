@@ -1,9 +1,10 @@
 
-    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
     <script src="/js/bootstrap.min.js"></script>
-    <title>Card de Alunos</title>
+    <title>Pesquisar</title>
 
+    <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="menu">Menu</a>
@@ -15,7 +16,7 @@
                     <ul class="navbar-nav">
                         <div class="hstack gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="realizarCadastros">Cadastro</a>
+                                <a class="nav-link" aria-current="page" href="realizarCadastros">Cadastro</a>
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
@@ -23,7 +24,7 @@
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
-                                <a class="nav-link" href="pesquisar">Pesquisar</a>
+                                <a class="nav-link active" href="pesquisar">Pesquisar</a>
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
@@ -34,27 +35,20 @@
                 </div>
             </div>
         </nav>
-  
-  
-        <div class="container-table-exibicao">
-            <h1>Alunos Cadastrados</h1>
-            <table class="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Nome do Aluno: </th>
-                        <th scope="col">Email do Aluno: </th>
-                        <th scope="col">Telefone do Aluno: </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each data}}
-                    <tr>
-                        <td>{{this.nomeAluno}}</td>
-                        <td>{{this.emailAluno}}</td>
-                        <td>{{this.telefoneAluno}}</td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
- 
+    </header>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Pesquisar Aluno: </h5>
+        <form class="d-flex" role="search" action="/pesquisarDadosAluno" method="get">
+            <input class="form-control me-2" type="text" name="nomeAluno" id="nomeAluno" placeholder="Listar Aluno" aria-label="Search">
+            <button class="btn btn-outline-success btn-sm" type="submit">Pesquisar</button>
+        </form>
+  </div>
+</div>
+
+<footer>
+    <div class="fixo bg-body-tertiary">
+        <h3>Desenvolvido por Mark Treinamentos</h3>
+    </div>
+</footer>

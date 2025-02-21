@@ -2,8 +2,9 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
     <script src="/js/bootstrap.min.js"></script>
-    <title>Card de Alunos</title>
+    <title>Card de Instrutor</title>
 
+    <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="menu">Menu</a>
@@ -34,27 +35,34 @@
                 </div>
             </div>
         </nav>
-  
-  
-        <div class="container-table-exibicao">
-            <h1>Alunos Cadastrados</h1>
-            <table class="table table-dark table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Nome do Aluno: </th>
-                        <th scope="col">Email do Aluno: </th>
-                        <th scope="col">Telefone do Aluno: </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each data}}
-                    <tr>
-                        <td>{{this.nomeAluno}}</td>
-                        <td>{{this.emailAluno}}</td>
-                        <td>{{this.telefoneAluno}}</td>
-                    </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-        </div>
- 
+    </header>
+
+    <div class="container-table-exibicao">
+    <h1>Salas Alocadas</h1>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nome da Sala: </th>
+                    <th scope="col">Nome Instrutor: </th>
+                    <th scope="col">Nome Curso: </th>
+                    <th scope="col">Local da Sala: </th>
+                    <th scope="col">Data: </th>
+                    <th scope="col">Hora Inicial: </th>
+                    <th scope="col">Hora Final:</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each data}}
+                <tr>
+                    <td>{{this.nomeSala}}</td>
+                    <td>{{this.nomeInstrutor}}</td>
+                    <td>{{this.nomeCurso}}</td>
+                    <td>{{this.localSala}}</td>
+                    <td>{{this.anoMesDia}}</td>
+                    <td>{{this.horaInicial}}</td>
+                    <td>{{this.horaFinal}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>

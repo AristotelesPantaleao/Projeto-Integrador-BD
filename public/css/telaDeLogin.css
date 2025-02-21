@@ -204,7 +204,7 @@ body{
 .loginLogo img{
     max-width: 120px;
     width: 100%;
-    margin-bottom: -125px;
+    margin-bottom: -100px;
     margin-top: 20px;
     margin-left: 320px;
 }
@@ -233,7 +233,7 @@ body{
     }
 
     .container input{
-        font-size: 32px;
+        font-size: 20px;
     }
 
     .container p {
@@ -241,7 +241,7 @@ body{
     }
 
     .container button{
-        font-size: 32px;
+        font-size: 20px;
     }
 }
 
@@ -251,7 +251,7 @@ body{
     }
 
     .container input{
-        font-size: 32px;
+        font-size: 20px;
     }
 
     .container p {
@@ -259,10 +259,121 @@ body{
     }
 
     .container button{
-        font-size: 32px;
+        font-size: 20px;
     }
 
     .loginLogo img{
         margin-bottom: -100px;
+    }
+}
+
+.voltar{   
+    margin-left: 125px;
+    position: fixed;
+    top: 615px;
+}
+
+@media(width:344px){
+    .voltar{
+        top: 630px;
+        left: -35px;
+    }
+}
+
+@media(min-width:360px) AND (max-width: 374.9px){
+    .voltar{
+        top: 555px;
+        left: -25px;
+    }
+}
+
+@media(min-width:375px) AND (max-width: 389.9px){
+    .voltar{
+        top: 520px;
+        left: -20px;
+    }
+}
+
+@media(min-width:390px) AND (max-width: 411.9px){
+    .voltar{
+        top: 610px;
+        left: -15px;
+    }
+}
+
+@media(min-width:412px) AND (max-width: 413.9px){
+    .voltar{
+        top: 645px;
+        left: 0px;
+    }
+}
+
+@media(min-width:414px) AND (max-width: 429.9px){
+    .voltar{
+        top: 635px;
+        left: 0px;
+    }
+}
+
+@media(width:430px){
+    .voltar{
+        top: 650px;
+        left: 10px;
+    }
+}
+
+@media(width:540px){
+    .voltar{
+        top: 545px;
+        left: 60px;
+    }
+}
+
+@media(min-width:768px) AND (max-width:819.9px){
+    .voltar{
+        top: 700px;
+        left: 180px;
+    }
+}
+
+@media(width:820px){
+    .voltar{
+        top: 780px;
+        left: 200px;
+    }
+}
+
+@media(width:853px){
+    .voltar{
+        top: 825px;
+        left: 220px;
+    }
+}
+
+@media(width: 912px){
+    .voltar{
+        top: 847px;
+        left: 460px;
+    }
+}
+
+@media(width:1024px){
+    .voltar{
+        top: 847px;
+        left: 515px;
+    }
+}
+
+@media(width:1024px) AND (height: 600px){
+    .voltar{
+        top: 465px;
+        left: 515px;
+    }
+}
+
+@media(width:1280px){
+    .voltar{
+        top: 545px;
+        left: 610px;
     }
 }

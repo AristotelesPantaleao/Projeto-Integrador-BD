@@ -24,6 +24,10 @@
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
+                                <a class="nav-link" href="pesquisar">Pesquisar</a>
+                            </li>
+                            <div class="vr"></div>
+                            <li class="nav-item">
                                 <a class="nav-link" href="relatorios">Relatório</a>
                             </li>
                         </div>
@@ -32,6 +36,53 @@
             </div>
         </nav>
     </header>
+
+<main style="display: flex; flex-wrap: wrap;">
+    <div class="container4">
+        <div class="mini-container">
+            {{#each data}}
+                <div class="card" id="salaLivre" style="width: 18rem;" data-card-id="{{@index}}">
+                    <div class="card-body">
+                        <form id="formulario" method="post">
+                            <input type="hidden" name="nomeSala" id="nomeSalaInput" value="Sala {{@index}}">
+                            <h5 class="card-title" name="nomeSala" id="centralizar">Sala {{@index}}</h5>
+                            <div class="form-floating">
+                                <select name="opcaoInstrutor" id="opcao-instrutor-{{@index}}" class="form-select" style="margin-bottom: 10px;" aria-label="Floating label select example" required>
+                                    <option selected disabled>Escolha o Instrutor: </option>
+                                    {{#each ../data2}}
+                                        <option value="{{this.nomeInstrutor}}" id="{{@index}}">{{this.nomeInstrutor}}</option>
+                                    {{/each}}
+                                </select>
+                                <select name="opcaoCurso" id="opcao-curso-{{@index}}" class="form-select" style="margin-bottom: 10px;" required>
+                                    <option selected disabled>Escolha o Curso: </option>
+                                    {{#each ../data3}}
+                                        <option value="{{this.nomeCurso}}" id="{{@index}}">{{this.nomeCurso}}</option>
+                                    {{/each}}
+                                </select>
+                                <select name="opcaoLocal" id="opcao-local-${{@index}}" class="form-select" style="margin-bottom: 10px;" required>
+                                    <option selected disabled>Escolha o Local: </option>
+                                    {{#each ../data}}
+                                        <option value="{{this.localSala}}" id="{{@index}}">{{this.localSala}}</option>
+                                    {{/each}}
+                                </select>
+                                <h6>Data inicio: </h6>
+                                <input type="date" value="anoMesDia" name="anoMesDia" id="data-{{@index}}" style="margin-bottom: 5px;" required>
+                                <br>
+                                Hora Inicial: 
+                                <input type="time" value="horaInicial" name="horaInicial" id="hora-${{@index}}" style="margin-left: 3px;" required>
+                                <br>
+                                Hora Final: 
+                                <input type="time" value="horaFinal" name="horaFinal" id="hora-${{@index}}" style="margin-left: 11px;" required>
+                                <br>
+                                <button type="submit" id="botao4" class="btn btn-light {{@index}}">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</main>
 
 <footer>
     <div class="fixo bg-body-tertiary">
