@@ -407,7 +407,7 @@ app.get('/pesquisarDadosAlocacao/',(req,res) => {
 const connection = mysql2.createConnection({
     host: "localhost",
     user: "root",
-    password: "123456",
+    password: "Sen@iDev77!.",
     database: "projeto_integrador"
 })
 
