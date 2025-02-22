@@ -54,7 +54,11 @@ app.get("/cadastroDeSalas", (req, res) => {
 })
 
 app.get("/cadastroDeTurmas", (req, res) => {
-    const query = 'SELECT nomeCurso, nomeAluno, nomeInstrutor FROM cadastro_Cursos LEFT JOIN cadastro_Alunos ON cadastro_Cursos.id_curso = cadastro_Alunos.id_aluno LEFT JOIN cadastro_Instrutores ON cadastro_Cursos.id_curso = cadastro_Instrutores.id_instrutor'
+    const query = 'SELECT nomeCurso FROM cadastro_Cursos'
+
+    const query2 = 'SELECT nomeAluno FROM cadastro_Alunos'
+
+    const query3 = 'SELECT nomeInstrutor FROM cadastro_Instrutores'
 
     console.log(query)
 
@@ -65,7 +69,24 @@ app.get("/cadastroDeTurmas", (req, res) => {
             return
         }
 
-        res.render('cadastroDeTurmas', { data: results })
+        connection.query(query2,(err,results2) => {
+            if(err){
+                console.error("Erro ao executar a query: ",err.stack)
+                res.status(500).send("Erro ao buscar dados")
+                return
+            }
+
+            connection.query(query3,(err,results3) => {
+                if(err){
+                    console.error("Erro ao executar a query: ",err.stack)
+                    res.status(500).send("Erro ao buscar dados")
+                    return
+                }
+
+                res.render('cadastroDeTurmas', { data: results, data2: results2, data3: results3 })
+            })
+            
+        })
     })
 
 })
@@ -154,7 +175,7 @@ app.get("/relatorioGeral", (req, res) => {
 
     const sql3 = 'SELECT * FROM cadastro_Instrutores'
 
-    const sql4 = 'SELECT nomeCurso, nomeAluno, nomeInstrutor FROM cadastro_Turmas ct, cadastro_Cursos cc, cadastro_Alunos ca, cadastro_Instrutores ci WHERE ct.id_turma = cc.id_curso AND ct.id_turma = ca.id_aluno AND ct.id_turma = ci.id_instrutor'
+    const sql4 = 'SELECT ct.id_Turma, cc.nomeCurso, ca.nomeAluno, ci.nomeInstrutor FROM cadastro_Turmas ct INNER JOIN cadastro_Cursos cc ON ct.id_curso = cc.id_curso INNER JOIN cadastro_Alunos ca ON ct.id_aluno = ca.id_aluno INNER JOIN cadastro_Instrutores ci ON ct.id_Instrutor = ci.id_instrutor'
 
     const sql5 = 'SELECT * FROM cadastro_Salas'
 
@@ -396,9 +417,9 @@ app.get('/pesquisarDadosAlocacao/',(req,res) => {
         if(err){
             console.log(err)
         }else{
-            const alocacao = data[0]
+            console.log(data)
 
-            res.render('pesquisarDadosAlocacao', {alocacao})
+            res.render('pesquisarDadosAlocacao', {alocacao: data})
         }
     })
 })
@@ -407,7 +428,7 @@ app.get('/pesquisarDadosAlocacao/',(req,res) => {
 const connection = mysql2.createConnection({
     host: "localhost",
     user: "root",
-    password: "Sen@iDev77!.",
+    password: "123456",
     database: "projeto_integrador"
 })
 
@@ -488,7 +509,7 @@ app.post("/cadastroDeAlunos", (req, res) => {
     connection.query(sql, function (err) {
         if (err) {
             console.log(err)
-            res.redirect("/erroCadastroAluno")
+             res.redirect('/erroCadastroAluno')
         } else {
             res.redirect("/realizarCadastros")
         }
@@ -563,9 +584,9 @@ const validarHoraEData = (req,res,next) => {
     const horaInicial = req.body.horaInicial
     const horaFinal = req.body.horaFinal
 
-    const query = `SELECT * FROM alocacao_De_Salas WHERE nomeSala = '${nomeSala}' AND anoMesDia = '${anoMesDia}' AND ((horaInicial <= '${horaInicial}' AND horaFinal >= '${horaFinal}') OR (horaInicial <= '${horaInicial}' AND horaFinal >= '${horaFinal}') OR (horaInicial >= '${horaInicial}' AND horaFinal <= '${horaFinal}'))`
+    const query = `SELECT * FROM alocacao_De_Salas WHERE nomeSala = '${nomeSala}' AND anoMesDia = '${anoMesDia}' AND ((horaInicial < '${horaFinal}' AND horaFinal > '${horaInicial}'))`
 
-    connection.query(query,[nomeSala,anoMesDia,horaInicial,horaFinal,horaInicial,horaFinal,horaInicial,horaFinal],(err,results) => {
+    connection.query(query,[nomeSala,anoMesDia,horaInicial,horaFinal],(err,results) => {
         if(err){
             console.log(err)
             res.status(500).send("Erro ao buscar dados")

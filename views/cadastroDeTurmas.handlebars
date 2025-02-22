@@ -65,7 +65,7 @@
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Selecione os Alunos:</label>
                                     <select class="form-select" name="nomeAluno" id="nomeAluno">
-                                        {{#each data}}
+                                        {{#each data2}}
                                         {{#if this.nomeAluno}}
                                         <option value="{{this.nomeAluno}}">{{this.nomeAluno}}</option>
                                         {{/if}}
@@ -75,7 +75,7 @@
                                 <div class="mb-3">
                                     <label for="exampleFormControlInput1" class="form-label">Selecione os Instrutores:</label>
                                     <select class="form-select" name="nomeInstrutor" id="nomeInstrutor">
-                                        {{#each data}}
+                                        {{#each data3}}
                                         {{#if this.nomeInstrutor}}
                                         <option value="{{this.nomeInstrutor}}">{{this.nomeInstrutor}}</option>
                                         {{/if}}
