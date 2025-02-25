@@ -37,6 +37,7 @@
 
 <div class="container-table-exibicao">
     <h1>Informações da Sala</h1>
+    {{#if sala.length}}
     <table class="table table-dark table-striped">
         <thead>
             <tr>
@@ -50,17 +51,22 @@
             </tr>
         </thead>
         <tbody>
+            {{#each sala}}
             <tr>
-                <td>{{sala.localSala}}</td>
-                <td>{{sala.capacidadeAlunos}}</td>
-                <td>{{sala.computadores}}</td>
-                <td>{{sala.projetor}}</td>
-                <td>{{sala.lousaInterativa}}</td>
-                <td>{{sala.material}}</td>
-                <td>{{sala.radio}}</td>
+                <td>{{this.localSala}}</td>
+                <td>{{this.capacidadeAlunos}}</td>
+                <td>{{this.computadores}}</td>
+                <td>{{this.projetor}}</td>
+                <td>{{this.lousaInterativa}}</td>
+                <td>{{this.material}}</td>
+                <td>{{this.radio}}</td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
     <h3 class="ms-3">1 - Sim</h3>
     <h3 class="ms-3">0 - Não</h3>
+    {{else}}
+        <p class="text-sm-left text-md-center text-lg-right">Nenhum registro encontrado para a sala pesquisada.</p>
+    {{/if}}
 </div>

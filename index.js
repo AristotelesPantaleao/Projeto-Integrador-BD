@@ -317,6 +317,10 @@ app.get('/erroCadastroCurso',(req,res) => {
     res.render('erroCadastroCurso')
 })
 
+app.get("/erroCadastroSala",(req,res) => {
+    res.render('erroCadastroSala')
+})
+
 app.get('/pesquisar',(req,res) => {
     res.render('pesquisar')
 })
@@ -351,9 +355,9 @@ app.get('/pesquisarDadosInstrutor/',(req,res) => {
             console.log(err)
             return
         }else{
-            const instrutor = data[0]
+            console.log(data)
             
-            res.render('pesquisarDadosInstrutor', {instrutor})
+            res.render('pesquisarDadosInstrutor', {instrutor: data})
         }
     })
 })
@@ -367,9 +371,9 @@ app.get('/pesquisarDadosAluno/',(req,res) => {
         if(err){
             console.log(err)
         }else{
-            const aluno = data[0]
+            console.log(data)
 
-            res.render('pesquisarDadosAluno', {aluno})
+            res.render('pesquisarDadosAluno', {aluno: data})
         }
     })
 })
@@ -383,9 +387,9 @@ app.get('/pesquisarDadosCurso/',(req,res) => {
         if(err){
             console.log(err)
         }else{
-            const curso = data[0]
+            console.log(data)
 
-            res.render('pesquisarDadosCurso', {curso})
+            res.render('pesquisarDadosCurso', {curso: data})
         }
     })
 
@@ -400,9 +404,9 @@ app.get('/pesquisarDadosSala/',(req,res) => {
         if(err){
             console.log(err)
         }else{
-            const sala = data[0]
+            console.log(data)
 
-            res.render('pesquisarDadosSala', {sala})
+            res.render('pesquisarDadosSala', {sala: data})
         }
     })
 
@@ -428,7 +432,7 @@ app.get('/pesquisarDadosAlocacao/',(req,res) => {
 const connection = mysql2.createConnection({
     host: "localhost",
     user: "root",
-    password: "123456",
+    password: "Sen@iDev77!.",
     database: "projeto_integrador"
 })
 
@@ -571,6 +575,7 @@ app.post("/cadastroDeSalas", (req, res) => {
     connection.query(sql, function (err) {
         if (err) {
             console.log(err)
+            res.redirect("/erroCadastroSala")
         } else {
             res.redirect("/realizarCadastros")
         }

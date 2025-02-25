@@ -37,6 +37,7 @@
 
 <div class="container-table-exibicao">
     <h1>Informações do Aluno</h1>
+    {{#if aluno.length}}
     <table class="table table-dark table-striped">
         <thead>
             <tr>
@@ -46,11 +47,16 @@
             </tr>
         </thead>
         <tbody>
+            {{#each aluno}}
             <tr>
-                <td>{{aluno.nomeAluno}}</td>
-                <td>{{aluno.emailAluno}}</td>
-                <td>{{aluno.telefoneAluno}}</td>
+                <td>{{this.nomeAluno}}</td>
+                <td>{{this.emailAluno}}</td>
+                <td>{{this.telefoneAluno}}</td>
             </tr>
+            {{/each}}
         </tbody>
     </table>
+    {{else}}
+        <p class="text-sm-left text-md-center text-lg-right">Nenhum registro encontrado para o aluno pesquisado.</p>
+    {{/if}}
 </div>
