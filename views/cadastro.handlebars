@@ -1,20 +1,27 @@
 {{#if css}}
     <link rel="stylesheet" href="/css/{{css}}">
 {{/if}}
+<link rel="stylesheet" href="/css/bootstrap.css">
 
 <div class="container" id="container">
     <div class="form-container sign-in">
         <div class="loginLogo">
-                <img src="./logo/logo.png" alt="">
+                <img src="/logo/logo.png" alt="">
         </div>
         <form id="loginForm" method="post">
-            <h1>Cadastro</h1>
+            <h1 class="fw-bold">Cadastro</h1>
             <input type="text" name="nomeCompleto" id="nomeCompleto" placeholder="Nome Completo" required>
             <input type="text" name="cadastroUsuario" id="cadastroUsuario" placeholder="Usuário" required>
             <input type="email" name="email" id="email" placeholder="Email" required>
             <input type="password" name="cadastroSenha" id="cadastroSenha" placeholder="Senha" required>
-            <button type="submit" id="cadastroBtn">Cadastrar</button>
-            <a href="/"><button type="button" class="voltar">Cancelar</button></a>
+            <div class="row">
+                <div class="col-md-6 mb-2">
+                    <button type="submit" id="cadastroBtn" class="btn btn-secondary">Cadastrar</button>
+                </div>
+                <div class="col-md-6">
+                    <a href="/"><button type="button" class="btn btn-secondary">Cancelar</button></a>
+                </div>
+            </div>
         </form>
     </div>
 </div>
