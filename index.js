@@ -33,10 +33,6 @@ app.get("/menu", (req, res) => {
     res.render("menu")
 })
 
-app.get("/realizarCadastros", (req, res) => {
-    res.render("realizarCadastros")
-})
-
 app.get("/cadastroDeAlunos", (req, res) => {
     res.render("cadastroDeAlunos")
 })
@@ -56,9 +52,9 @@ app.get("/cadastroDeSalas", (req, res) => {
 app.get("/cadastroDeTurmas", (req, res) => {
     const query = 'SELECT nomeCurso FROM cadastro_Cursos'
 
-    const query2 = 'SELECT nomeAluno FROM cadastro_Alunos'
+    const query2 = 'SELECT nomeAluno, sobrenomeAluno FROM cadastro_Alunos'
 
-    const query3 = 'SELECT nomeInstrutor FROM cadastro_Instrutores'
+    const query3 = 'SELECT nomeInstrutor, sobrenomeInstrutor FROM cadastro_Instrutores'
 
     console.log(query)
 
@@ -154,8 +150,8 @@ app.get("/relatorioSala", (req, res) => {
 
 app.get("/relatorioTurma", (req, res) => {
 
-    const query = "SELECT ct.id_Turma, cc.nomeCurso, ca.nomeAluno, ci.nomeInstrutor FROM cadastro_Turmas ct INNER JOIN cadastro_Cursos cc ON ct.id_curso = cc.id_curso INNER JOIN cadastro_Alunos ca ON ct.id_aluno = ca.id_aluno INNER JOIN cadastro_Instrutores ci ON ct.id_Instrutor = ci.id_instrutor;"
-
+    const query = "SELECT ct.id_Turma, cc.nomeCurso, ca.nomeAluno, ca.sobrenomeAluno, ci.nomeInstrutor, ci.sobrenomeInstrutor FROM cadastro_Turmas ct INNER JOIN cadastro_Cursos cc ON ct.id_curso = cc.id_curso INNER JOIN cadastro_Alunos ca ON ct.id_aluno = ca.id_aluno INNER JOIN cadastro_Instrutores ci ON ct.id_Instrutor = ci.id_instrutor;"
+    
     connection.query(query, (err, results) => {
         if (err) {
             console.error("Erro ao executar a query: ", err.stack)
@@ -175,11 +171,11 @@ app.get("/relatorioGeral", (req, res) => {
 
     const sql3 = 'SELECT * FROM cadastro_Instrutores'
 
-    const sql4 = 'SELECT ct.id_Turma, cc.nomeCurso, ca.nomeAluno, ci.nomeInstrutor FROM cadastro_Turmas ct INNER JOIN cadastro_Cursos cc ON ct.id_curso = cc.id_curso INNER JOIN cadastro_Alunos ca ON ct.id_aluno = ca.id_aluno INNER JOIN cadastro_Instrutores ci ON ct.id_Instrutor = ci.id_instrutor'
+    const sql4 = 'SELECT ct.id_Turma, cc.nomeCurso, ca.nomeAluno, ca.sobrenomeAluno, ci.nomeInstrutor, ci.sobrenomeInstrutor FROM cadastro_Turmas ct INNER JOIN cadastro_Cursos cc ON ct.id_curso = cc.id_curso INNER JOIN cadastro_Alunos ca ON ct.id_aluno = ca.id_aluno INNER JOIN cadastro_Instrutores ci ON ct.id_Instrutor = ci.id_instrutor;'
 
     const sql5 = 'SELECT * FROM cadastro_Salas'
 
-    const sql6 = 'SELECT nomeSala, nomeInstrutor, nomeCurso, anoMesDia, horaInicial, horaFinal FROM alocacao_De_Salas ads, cadastro_Instrutores ci, cadastro_Cursos cc WHERE ads.id_instrutor = ci.id_instrutor AND ads.id_curso = cc.id_curso'
+    const sql6 = 'SELECT nomeSala, nomeInstrutor, sobrenomeInstrutor, nomeCurso, localSala, anoMesDia, horaInicial, horaFinal FROM alocacao_De_Salas ads, cadastro_Instrutores ci, cadastro_Cursos cc, cadastro_Salas ca WHERE ads.id_instrutor = ci.id_instrutor AND ads.id_curso = cc.id_curso AND ads.id_Sala = ca.id_Sala;'
 
     connection.query(sql, (err, results) => {
         if (err) {
@@ -280,7 +276,7 @@ app.get("/alocacaoDeSalas", (req, res) => {
 
 app.get("/salasAlocadas", (req, res) => {
 
-    const sql = 'SELECT nomeSala, nomeInstrutor, nomeCurso, localSala, anoMesDia, horaInicial, horaFinal FROM alocacao_De_Salas ads, cadastro_Instrutores ci, cadastro_Cursos cc, cadastro_Salas ca WHERE ads.id_instrutor = ci.id_instrutor AND ads.id_curso = cc.id_curso AND ads.id_Sala = ca.id_Sala'
+    const sql = 'SELECT nomeSala, nomeInstrutor, sobrenomeInstrutor, nomeCurso, localSala, anoMesDia, horaInicial, horaFinal FROM alocacao_De_Salas ads, cadastro_Instrutores ci, cadastro_Cursos cc, cadastro_Salas ca WHERE ads.id_instrutor = ci.id_instrutor AND ads.id_curso = cc.id_curso AND ads.id_Sala = ca.id_Sala;'
 
     connection.query(sql, (err, results) => {
         if (err) {
@@ -438,12 +434,13 @@ const connection = mysql2.createConnection({
 
 // Rota para cadastrar usuário
 app.post("/cadastro", (req, res) => {
-    const nomeCompleto = req.body.nomeCompleto
+    const nome = req.body.nome
+    const sobrenome = req.body.sobrenome
     const usuario = req.body.cadastroUsuario
     const email = req.body.email
     const senha = req.body.cadastroSenha
 
-    const sql = `INSERT INTO cadastro(nome_Completo, usuario, email, senha) VALUES ('${nomeCompleto}', '${usuario}', '${email}', '${senha}')`
+    const sql = `INSERT INTO cadastro(nome, sobrenome, usuario, email, senha) VALUES ('${nome}', '${sobrenome}', '${usuario}', '${email}', '${senha}')`
     console.log(sql)
 
 
@@ -496,17 +493,18 @@ app.post("/cadastroDeCursos", (req, res) => {
             console.log(err)
             res.redirect("/erroCadastroCurso")
         } else {
-            res.redirect("/realizarCadastros")
+            res.redirect("/menu")
         }
     })
 })
 
 app.post("/cadastroDeAlunos", (req, res) => {
     const nome_aluno = req.body.nomeAluno
+    const sobrenome_aluno = req.body.sobrenomeAluno
     const email_aluno = req.body.emailAluno
     const telefone_aluno = req.body.telefoneAluno
 
-    const sql = `INSERT INTO cadastro_Alunos(nomeAluno, emailAluno, telefoneAluno) VALUES('${nome_aluno}', '${email_aluno}', '${telefone_aluno}')`
+    const sql = `INSERT INTO cadastro_Alunos(nomeAluno, sobrenomeAluno, emailAluno, telefoneAluno) VALUES('${nome_aluno}', '${sobrenome_aluno}', '${email_aluno}', '${telefone_aluno}')`
 
     console.log(sql)
 
@@ -515,17 +513,18 @@ app.post("/cadastroDeAlunos", (req, res) => {
             console.log(err)
              res.redirect('/erroCadastroAluno')
         } else {
-            res.redirect("/realizarCadastros")
+            res.redirect("/menu")
         }
     })
 })
 
 app.post("/cadastroDeInstrutores", (req, res) => {
     const nome_instrutor = req.body.nomeInstrutor
+    const sobrenome_instrutor = req.body.sobrenomeInstrutor
     const email_instrutor = req.body.emailInstrutor
     const telefone_instrutor = req.body.telefoneInstrutor
 
-    const sql = `INSERT INTO cadastro_Instrutores(nomeInstrutor, emailInstrutor, telefoneInstrutor) VALUES('${nome_instrutor}', '${email_instrutor}', '${telefone_instrutor}')`
+    const sql = `INSERT INTO cadastro_Instrutores(nomeInstrutor, sobrenomeInstrutor, emailInstrutor, telefoneInstrutor) VALUES('${nome_instrutor}', '${sobrenome_instrutor}', '${email_instrutor}', '${telefone_instrutor}')`
 
     console.log(sql)
 
@@ -534,7 +533,7 @@ app.post("/cadastroDeInstrutores", (req, res) => {
             console.log(err)
             res.redirect("/erroCadastroInstrutor")
         } else {
-            res.redirect("/realizarCadastros")
+            res.redirect("/menu")
         }
     })
 })
@@ -542,7 +541,7 @@ app.post("/cadastroDeInstrutores", (req, res) => {
 app.post("/cadastroDeTurmas", (req, res) => {
 
     const nome_Curso = req.body.nomeCurso
-    const nome_Aluno = req.body.nomeAluno
+    const nome_Aluno = req.body.nomeAluno 
     const nome_Instrutor = req.body.nomeInstrutor
 
     const sql = `INSERT INTO cadastro_Turmas(id_curso,id_aluno,id_instrutor) VALUES((SELECT id_curso FROM cadastro_Cursos WHERE nomeCurso = '${nome_Curso}'), (SELECT id_aluno FROM cadastro_Alunos WHERE nomeAluno = '${nome_Aluno}'), (SELECT id_instrutor FROM cadastro_Instrutores WHERE nomeInstrutor = '${nome_Instrutor}'))`
@@ -553,7 +552,7 @@ app.post("/cadastroDeTurmas", (req, res) => {
         if (err) {
             console.log(err)
         } else {
-            res.redirect("/realizarCadastros")
+            res.redirect("/menu")
         }
     })
 })
@@ -577,7 +576,7 @@ app.post("/cadastroDeSalas", (req, res) => {
             console.log(err)
             res.redirect("/erroCadastroSala")
         } else {
-            res.redirect("/realizarCadastros")
+            res.redirect("/menu")
         }
     })
 

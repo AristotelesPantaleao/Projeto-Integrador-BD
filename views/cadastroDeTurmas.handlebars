@@ -18,7 +18,7 @@
                     <ul class="navbar-nav">
                         <div class="hstack gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="realizarCadastros">Cadastro</a>
+                                <a class="nav-link active" aria-current="page" href="menu">Cadastro</a>
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
@@ -39,59 +39,40 @@
         </nav>
     </header>
     <main>
-        <div class="container3">
-            <button type="button" id="botao2" class="btn btn-warning" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-                Cadastro de Turmas
-            </button>
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content modal-dialog-scrollable">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de Turmas</h1>
-                        </div>
-                        <form id="formulario" method="post">
-                            <div class="modal-body" id="modal-body">
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Selecione o Curso:</label>
-                                    <select class="form-select" name="nomeCurso" id="nomeCurso">
-                                        {{#each data}}
-                                        <option value="{{this.nomeCurso}}">{{this.nomeCurso}}</option>
-                                        {{/each}}
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Selecione os Alunos:</label>
-                                    <select class="form-select" name="nomeAluno" id="nomeAluno">
-                                        {{#each data2}}
-                                        {{#if this.nomeAluno}}
-                                        <option value="{{this.nomeAluno}}">{{this.nomeAluno}}</option>
-                                        {{/if}}
-                                        {{/each}}
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Selecione os Instrutores:</label>
-                                    <select class="form-select" name="nomeInstrutor" id="nomeInstrutor">
-                                        {{#each data3}}
-                                        {{#if this.nomeInstrutor}}
-                                        <option value="{{this.nomeInstrutor}}">{{this.nomeInstrutor}}</option>
-                                        {{/if}}
-                                        {{/each}}
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                <button type="submit" class="btn btn-primary">Salvar</button>
-                            </div>
-                        </form>
-                    </div>
+        
+        <div class="form-control">
+            <h1 class="fw-bold text-center mt-3">Cadastro de Turma</h1>
+            <form id="formulario" method="post">
+                <div class="mb-3 ms-3">
+                    <label for="exampleFormControlInput1" class="form-label">Selecione o Curso:</label>
+                    <select class="form-select" name="nomeCurso" id="nomeCurso">
+                        {{#each data}}
+                        <option value="{{this.nomeCurso}}">{{this.nomeCurso}}</option>
+                        {{/each}}
+                    </select>
                 </div>
-            </div>
-
+                <div class="mb-3 ms-3">
+                    <label for="exampleFormControlInput1" class="form-label">Selecione os Alunos:</label>
+                    <select class="form-select" name="nomeAluno" id="nomeAluno">
+                        {{#each data2}}
+                        {{#if this.nomeAluno}}
+                        <option value="{{this.nomeAluno}}">{{this.nomeAluno}} {{this.sobrenomeAluno}}</option>
+                        {{/if}}
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="mb-3 ms-3">
+                    <label for="exampleFormControlInput1" class="form-label">Selecione os Instrutores:</label>
+                    <select class="form-select" name="nomeInstrutor" id="nomeInstrutor">
+                        {{#each data3}}
+                        {{#if this.nomeInstrutor}}
+                        <option value="{{this.nomeInstrutor}}">{{this.nomeInstrutor}} {{this.sobrenomeInstrutor}}</option>
+                        {{/if}}
+                        {{/each}}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary ms-3">Salvar</button>
+            </form>
         </div>
     </main>
     <footer>

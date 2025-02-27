@@ -1,15 +1,36 @@
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.bundle.js"></script>
     <title>Menu</title>
 
 
     <main>
         <div class="logo">
-            <img src="../logo/logo.png" alt="">
+            <img src="/logo/logo.png" alt="">
         </div>
         <div class="container2">
-            <a href="realizarCadastros"><button type="button" id="botao3"
-                    class="btn btn-warning btn-lg">Cadastro</button></a>
+            <a class="btn btn-warning btn-lg" data-bs-toggle="offcanvas" id="botao3" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                Cadastro
+            </a>
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Cadastros</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    Escolha o que você quer cadastrar.
+                </div>
+            <div class="dropdown mt-3 btn-group-vertical">
+                    <a class="btn btn-primary btn-lg" href="cadastroDeSalas">1°Cadastro de Salas</a>
+                    <a class="btn btn-primary btn-lg" href="cadastroDeAlunos">2°Cadastro de Alunos</a>
+                    <a class="btn btn-primary btn-lg" href="cadastroDeCursos">3°Cadastro de Cursos</a>
+                    <a class="btn btn-primary btn-lg" href="cadastroDeInstrutores">4°Cadastro de Instrutores</a>
+                    <a class="btn btn-primary btn-lg" href="cadastroDeTurmas">5°Cadastro de Turmas</a>
+            </div>
+        </div>
+    </div>
             <a href="alocacaoDeSalas"><button type="button" id="botao3" class="btn btn-dark btn-lg">Alocação de
                     Salas</button></a>
             <a href="pesquisar"><button type="button" id="botao3" class="btn btn-success btn-lg">Pesquisar</button></a>
@@ -17,4 +38,5 @@
                     class="btn btn-info btn-lg">Relatório</button></a>
             <a href="/"><button type="button" id="botaoSair" class="btn btn-danger btn-lg">Sair</button></a>
         </div>
+
     </main>

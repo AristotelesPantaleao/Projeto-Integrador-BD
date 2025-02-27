@@ -15,7 +15,7 @@
                     <ul class="navbar-nav">
                         <div class="hstack gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="realizarCadastros">Cadastro</a>
+                                <a class="nav-link active" aria-current="page" href="menu">Cadastro</a>
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
@@ -41,6 +41,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Nome do Aluno: </th>
+                        <th scope="col">Sobrenome do Aluno: </th>
                         <th scope="col">Email do Aluno: </th>
                         <th scope="col">Telefone do Aluno: </th>
                     </tr>
@@ -49,6 +50,7 @@
                     {{#each data}}
                     <tr>
                         <td>{{this.nomeAluno}}</td>
+                        <td>{{this.sobrenomeAluno}}</td>
                         <td>{{this.emailAluno}}</td>
                         <td>{{this.telefoneAluno}}</td>
                     </tr>
@@ -83,6 +85,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Nome do Instrutor: </th>
+                        <th scope="col">Sobrenome do Instrutor: </th>
                         <th scope="col">Email do Instrutor: </th>
                         <th scope="col">Telefone do Instrutor: </th>
                     </tr>
@@ -91,6 +94,7 @@
                     {{#each data3}}
                     <tr>
                         <td>{{this.nomeInstrutor}}</td>
+                        <td>{{this.sobrenomeInstrutor}}</td>
                         <td>{{this.emailInstrutor}}</td>
                         <td>{{this.telefoneInstrutor}}</td>
                     </tr>
@@ -106,7 +110,9 @@
                 <tr>
                     <th scope="col">Nome do Curso: </th>
                     <th scope="col">Nome do Aluno: </th>
+                    <th scope="col">Sobrenome do Aluno: </th>
                     <th scope="col">Nome do Instrutor: </th>
+                    <th scope="col">Sobrenome do Instrutor: </th>
                 </tr>
             </thead>
             <tbody>
@@ -114,7 +120,9 @@
                 <tr>
                     <td>{{this.nomeCurso}}</td>
                     <td>{{this.nomeAluno}}</td>
+                    <td>{{this.sobrenomeAluno}}</td>
                     <td>{{this.nomeInstrutor}}</td>
+                    <td>{{this.sobrenomeInstrutor}}</td>
                 </tr>
                 {{/each}}
             </tbody>
@@ -159,8 +167,9 @@
             <thead>
                 <tr>
                     <th scope="col">Nome da Sala: </th>
-                    <th scope="col">Nome Instrutor: </th>
-                    <th scope="col">Nome Curso: </th>
+                    <th scope="col">Nome do Instrutor: </th>
+                    <th scope="col">Sobrenome do Instrutor</th>
+                    <th scope="col">Nome do Curso: </th>
                     <th scope="col">Data: </th>
                     <th scope="col">Hora Inicial: </th>
                     <th scope="col">Hora Final:</th>
@@ -171,6 +180,7 @@
                 <tr>
                     <td>{{this.nomeSala}}</td>
                     <td>{{this.nomeInstrutor}}</td>
+                    <td>{{this.sobrenomeInstrutor}}</td>
                     <td>{{this.nomeCurso}}</td>
                     <td>{{this.anoMesDia}}</td>
                     <td>{{this.horaInicial}}</td>

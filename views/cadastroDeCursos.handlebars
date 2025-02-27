@@ -16,7 +16,7 @@
                     <ul class="navbar-nav">
                         <div class="hstack gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="realizarCadastros">Cadastro</a>
+                                <a class="nav-link active" aria-current="page" href="menu">Cadastro</a>
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
@@ -37,41 +37,20 @@
         </nav>
     </header>
     <main>
-        <div class="container3">
-            <button type="button" id="botao2" class="btn btn-warning" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-                Cadastro de Cursos
-            </button>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content modal-dialog-scrollable">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de Cursos</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form id="formulario" method="post">
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Nome do curso:</label>
-                                    <input type="text" class="form-control" name="nomeCurso" id="nomeCurso" placeholder="Nome do Curso"
-                                        required>
-                                </div>
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Leave a comment here" name="descricaoCurso" id="descricaoCurso" style="height: 100px" required></textarea>
-                                    <label for="floatingTextarea2">Descrição do curso:</label>
-                                  </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                <button type="submit" class="btn btn-primary">Salvar</button>
-                            </div>
-                        </form>
-                    </div>
+        <div class="form-control">
+            <h1 class="fw-bold text-center mt-3">Cadastro de Cursos</h1>
+            <form id="formulario" method="post">
+                <div class="mb-3 ms-3">
+                    <label for="exampleFormControlInput1" class="form-label">Nome do curso:</label>
+                    <input type="text" class="form-control" name="nomeCurso" id="nomeCurso" placeholder="Nome do Curso" required>
                 </div>
-            </div>
-
+                <div class="form-floating ms-3">
+                    <textarea class="form-control" placeholder="Leave a comment here" name="descricaoCurso" id="descricaoCurso" style="height: 100px" required></textarea>
+                    <label for="floatingTextarea2">Descrição do curso:</label>
+                </div>                            
+                <button type="submit" class="btn btn-primary ms-3">Salvar</button>                
+            </form>
         </div>
     </main>
     <footer>

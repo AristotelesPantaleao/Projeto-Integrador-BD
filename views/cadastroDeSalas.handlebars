@@ -16,7 +16,7 @@
                     <ul class="navbar-nav">
                         <div class="hstack gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="realizarCadastros">Cadastro</a>
+                                <a class="nav-link active" aria-current="page" href="menu">Cadastro</a>
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
@@ -37,89 +37,73 @@
         </nav>
     </header>
     <main>
-        <div class="container3">
-            <button type="button" id="botao2" class="btn btn-warning" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-                Cadastro de Salas
-            </button>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content modal-dialog-scrollable" id="meuModal">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Cadastro de Salas</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form id="formulario" method="post">
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="localSala" class="form-label">Local da Sala:</label>
-                                    <input type="text" class="form-control" name="localSala" id="localSala" placeholder="Local da Sala"
-                                        required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="capacidadeAluno" class="form-label">Capacidade de alunos:</label>
-                                    <input type="number" min="1" class="form-control" name="capacidadeAluno" id="capacidadeAluno"
-                                        placeholder="Capacidade de alunos" required>
-                                </div>
-
-                                <div class="form-check">
-                                    <label>Recursos da sala:</label><br>
-                                    <input class="form-check-input" type="checkbox" value="marcado" name="flexComputadores" id="flexComputadores">
-                                    <label class="form-check-label" for="flexComputadores" id="flexComputadores">
-                                        Computadores
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="marcado" name="flexProjetor" id="flexProjetor">
-                                    <label class="form-check-label" for="flexProjetor">
-                                        Projetor
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="marcado" name="flexLousaInterativa" id="flexLousaInterativa">
-                                    <label class="form-check-label" for="flexLousaInterativa">
-                                        Lousa Interativa
-                                    </label>
-                                </div>
-
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="marcado" name="flexMaterial" id="flexMaterial">
-                                    <label class="form-check-label" for="flexMaterial">
-                                        Material (lápis, canetas, borrachas, papel)
-                                    </label>
-                                </div>
-                                <br>
-                                <div class="form-check">
-                                    <label>Área para Coffee Break?</label><br>
-                                    <input class="form-check-input" type="radio" value="sim" name="flexRadioCoffee"
-                                        id="flexRadioSim" required>
-                                    <label class="form-check-label" for="flexRadioSim">
-                                        Sim
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" value="nao" name="flexRadioCoffee"
-                                        id="flexRadioNao" required>
-                                    <label class="form-check-label" for="flexRadioNao">
-                                        Não
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                <button type="submit" class="btn btn-primary">Salvar</button>
-                            </div>
-                        </form>
+        <div class="container-form">
+            <h1 class="fw-bold text-center mt-3">Cadastro de Sala</h1>
+            <form id="formulario" method="post">
+                    <div class="mb-3 ms-3">
+                        <label for="localSala" class="form-label">Local da Sala:</label>
+                        <input type="text" class="form-control" name="localSala" id="localSala" placeholder="Local da Sala"
+                            required>
                     </div>
-                </div>
-            </div>
 
+                    <div class="mb-3 ms-3">
+                        <label for="capacidadeAluno" class="form-label">Capacidade de alunos:</label>
+                        <input type="number" min="1" class="form-control" name="capacidadeAluno" id="capacidadeAluno"
+                            placeholder="Capacidade de alunos" required>
+                    </div>
+
+                    <div class="form-check ms-3">
+                        <label>Recursos da sala:</label><br>
+                        <input class="form-check-input" type="checkbox" value="marcado" name="flexComputadores" id="flexComputadores">
+                        <label class="form-check-label" for="flexComputadores" id="flexComputadores">
+                            Computadores
+                        </label>
+                    </div>
+
+                    <div class="form-check ms-3">
+                        <input class="form-check-input" type="checkbox" value="marcado" name="flexProjetor" id="flexProjetor">
+                        <label class="form-check-label" for="flexProjetor">
+                            Projetor
+                        </label>
+                    </div>
+
+                    <div class="form-check ms-3">
+                        <input class="form-check-input" type="checkbox" value="marcado" name="flexLousaInterativa" id="flexLousaInterativa">
+                        <label class="form-check-label" for="flexLousaInterativa">
+                            Lousa Interativa
+                        </label>
+                    </div>
+
+                    <div class="form-check ms-3">
+                        <input class="form-check-input" type="checkbox" value="marcado" name="flexMaterial" id="flexMaterial">
+                        <label class="form-check-label" for="flexMaterial">
+                            Material (lápis, canetas, borrachas, papel)
+                        </label>
+                    </div>
+                    <br>
+                    <div class="form-check ms-3">
+                        <label>Área para Coffee Break?</label><br>
+                        <input class="form-check-input" type="radio" value="sim" name="flexRadioCoffee"
+                            id="flexRadioSim" required>
+                        <label class="form-check-label" for="flexRadioSim">
+                            Sim
+                        </label>
+                    </div>
+
+                    <div class="form-check ms-3">
+                        <input class="form-check-input" type="radio" value="nao" name="flexRadioCoffee"
+                            id="flexRadioNao" required>
+                        <label class="form-check-label" for="flexRadioNao">
+                            Não
+                        </label>
+                    </div>
+                
+                <button type="submit" class="btn btn-primary ms-3">Salvar</button>
+                
+            </form>
         </div>
+
     </main>
     <footer>
         <div class="fixo bg-body-tertiary">

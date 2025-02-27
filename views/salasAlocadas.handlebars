@@ -16,7 +16,7 @@
                     <ul class="navbar-nav">
                         <div class="hstack gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="realizarCadastros">Cadastro</a>
+                                <a class="nav-link active" aria-current="page" href="menu">Cadastro</a>
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
@@ -43,8 +43,9 @@
             <thead>
                 <tr>
                     <th scope="col">Nome da Sala: </th>
-                    <th scope="col">Nome Instrutor: </th>
-                    <th scope="col">Nome Curso: </th>
+                    <th scope="col">Nome do Instrutor: </th>
+                    <th scope="col">Sobrenome do Instrutor: </th>
+                    <th scope="col">Nome do Curso: </th>
                     <th scope="col">Local da Sala: </th>
                     <th scope="col">Data: </th>
                     <th scope="col">Hora Inicial: </th>
@@ -56,6 +57,7 @@
                 <tr>
                     <td>{{this.nomeSala}}</td>
                     <td>{{this.nomeInstrutor}}</td>
+                    <td>{{this.sobrenomeInstrutor}}</td>
                     <td>{{this.nomeCurso}}</td>
                     <td>{{this.localSala}}</td>
                     <td>{{this.anoMesDia}}</td>

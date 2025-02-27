@@ -16,7 +16,7 @@
                         <div class="hstack gap-3">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page"
-                                    href="realizarCadastros">Cadastro</a>
+                                    href="menu">Cadastro</a>
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
@@ -45,12 +45,11 @@
                     <div class="card-body">
                         <form id="formulario" method="post">
                             <input type="hidden" name="nomeSala" id="nomeSalaInput" value="Sala {{@index}}">
-                            <h5 class="card-title" name="nomeSala" id="centralizar">Sala {{@index}}</h5>
                             <div class="form-floating">
                                 <select name="opcaoInstrutor" id="opcao-instrutor-{{@index}}" class="form-select" style="margin-bottom: 10px;" aria-label="Floating label select example" required>
                                     <option selected disabled>Escolha o Instrutor: </option>
                                     {{#each ../data2}}
-                                        <option value="{{this.nomeInstrutor}}" id="{{@index}}">{{this.nomeInstrutor}}</option>
+                                        <option value="{{this.nomeInstrutor}}" id="{{@index}}">{{this.nomeInstrutor}} {{this.sobrenomeInstrutor}}</option>
                                     {{/each}}
                                 </select>
                                 <select name="opcaoCurso" id="opcao-curso-{{@index}}" class="form-select" style="margin-bottom: 10px;" required>

@@ -10,6 +10,7 @@
 
 #botao3{
     width: 100%;
+    font-size: 35px;
 }
 
 #botao4{
@@ -194,4 +195,12 @@ h1{
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#offcanvasExample {
+    width: 50vw; /* Define a largura para 50% da largura da viewport */
+}
+
+.dropdown {
+    width: 40vw;
 }

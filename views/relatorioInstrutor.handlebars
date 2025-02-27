@@ -15,7 +15,7 @@
                     <ul class="navbar-nav">
                         <div class="hstack gap-3">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="realizarCadastros">Cadastro</a>
+                                <a class="nav-link active" aria-current="page" href="menu">Cadastro</a>
                             </li>
                             <div class="vr"></div>
                             <li class="nav-item">
@@ -41,6 +41,7 @@
                 <thead>
                     <tr>
                         <th scope="col">Nome do Instrutor: </th>
+                        <th scope="col">Sobrenome do Instrutor: </th>
                         <th scope="col">Email do Instrutor: </th>
                         <th scope="col">Telefone do Instrutor: </th>
                     </tr>
@@ -49,6 +50,7 @@
                     {{#each data}}
                     <tr>
                         <td>{{this.nomeInstrutor}}</td>
+                        <td>{{this.sobrenomeInstrutor}}</td>
                         <td>{{this.emailInstrutor}}</td>
                         <td>{{this.telefoneInstrutor}}</td>
                     </tr>
