@@ -175,7 +175,7 @@ app.get("/relatorioGeral", (req, res) => {
 
     const sql5 = 'SELECT * FROM cadastro_Salas'
 
-    const sql6 = 'SELECT nomeSala, nomeInstrutor, sobrenomeInstrutor, nomeCurso, localSala, anoMesDia, horaInicial, horaFinal FROM alocacao_De_Salas ads, cadastro_Instrutores ci, cadastro_Cursos cc, cadastro_Salas ca WHERE ads.id_instrutor = ci.id_instrutor AND ads.id_curso = cc.id_curso AND ads.id_Sala = ca.id_Sala;'
+    const sql6 = 'SELECT nomeInstrutor, sobrenomeInstrutor, nomeCurso, localSala, anoMesDia, horaInicial, horaFinal FROM alocacao_De_Salas ads, cadastro_Instrutores ci, cadastro_Cursos cc, cadastro_Salas ca WHERE ads.id_instrutor = ci.id_instrutor AND ads.id_curso = cc.id_curso AND ads.id_Sala = ca.id_Sala;'
 
     connection.query(sql, (err, results) => {
         if (err) {
@@ -276,7 +276,7 @@ app.get("/alocacaoDeSalas", (req, res) => {
 
 app.get("/salasAlocadas", (req, res) => {
 
-    const sql = 'SELECT nomeSala, nomeInstrutor, sobrenomeInstrutor, nomeCurso, localSala, anoMesDia, horaInicial, horaFinal FROM alocacao_De_Salas ads, cadastro_Instrutores ci, cadastro_Cursos cc, cadastro_Salas ca WHERE ads.id_instrutor = ci.id_instrutor AND ads.id_curso = cc.id_curso AND ads.id_Sala = ca.id_Sala;'
+    const sql = 'SELECT nomeInstrutor, sobrenomeInstrutor, nomeCurso, localSala, anoMesDia, horaInicial, horaFinal FROM alocacao_De_Salas ads, cadastro_Instrutores ci, cadastro_Cursos cc, cadastro_Salas ca WHERE ads.id_instrutor = ci.id_instrutor AND ads.id_curso = cc.id_curso AND ads.id_Sala = ca.id_Sala;'
 
     connection.query(sql, (err, results) => {
         if (err) {
@@ -411,7 +411,7 @@ app.get('/pesquisarDadosSala/',(req,res) => {
 app.get('/pesquisarDadosAlocacao/',(req,res) => {
     const nome = req.query.salaAlocada
 
-    const sql = `SELECT nomeSala, nomeInstrutor, nomeCurso, localSala, anoMesDia, horaInicial, horaFinal FROM alocacao_De_Salas ads, cadastro_Instrutores ci, cadastro_Cursos cc, cadastro_Salas ca WHERE ads.id_instrutor = ci.id_instrutor AND ads.id_curso = cc.id_curso AND ads.id_Sala = ca.id_Sala AND nomeSala = '${nome}'`
+    const sql = `SELECT localSala, nomeInstrutor, nomeCurso, anoMesDia, horaInicial, horaFinal FROM alocacao_De_Salas ads, cadastro_Instrutores ci, cadastro_Cursos cc, cadastro_Salas ca WHERE ads.id_instrutor = ci.id_instrutor AND ads.id_curso = cc.id_curso AND ads.id_Sala = ca.id_Sala AND localSala = '${nome}'`
 
     connection.query(sql,function(err,data){
         if(err){
@@ -428,7 +428,7 @@ app.get('/pesquisarDadosAlocacao/',(req,res) => {
 const connection = mysql2.createConnection({
     host: "localhost",
     user: "root",
-    password: "123456",
+    password: "Sen@iDev77!.",
     database: "projeto_integrador"
 })
 
@@ -583,14 +583,13 @@ app.post("/cadastroDeSalas", (req, res) => {
 })
 
 const validarHoraEData = (req,res,next) => {
-    const nomeSala = req.body.nomeSala
     const anoMesDia = req.body.anoMesDia
     const horaInicial = req.body.horaInicial
     const horaFinal = req.body.horaFinal
 
-    const query = `SELECT * FROM alocacao_De_Salas WHERE nomeSala = '${nomeSala}' AND anoMesDia = '${anoMesDia}' AND ((horaInicial < '${horaFinal}' AND horaFinal > '${horaInicial}'))`
+    const query = `SELECT * FROM alocacao_De_Salas WHERE anoMesDia = '${anoMesDia}' AND ((horaInicial < '${horaFinal}' AND horaFinal > '${horaInicial}'))`
 
-    connection.query(query,[nomeSala,anoMesDia,horaInicial,horaFinal],(err,results) => {
+    connection.query(query,[anoMesDia,horaInicial,horaFinal],(err,results) => {
         if(err){
             console.log(err)
             res.status(500).send("Erro ao buscar dados")
@@ -608,7 +607,6 @@ const validarHoraEData = (req,res,next) => {
 
 app.post('/alocacaoDeSalas', validarHoraEData, (req, res) => {
 
-    const nomeSala = req.body.nomeSala
     const nomeInstrutor = req.body.opcaoInstrutor
     const nomeCurso = req.body.opcaoCurso
     const localSala = req.body.opcaoLocal
@@ -616,7 +614,7 @@ app.post('/alocacaoDeSalas', validarHoraEData, (req, res) => {
     const horaInicial = req.body.horaInicial
     const horaFinal = req.body.horaFinal
 
-    const sql = `INSERT INTO alocacao_De_Salas(nomeSala,id_instrutor,id_curso,id_Sala,anoMesDia,horaInicial,horaFinal) VALUES('${nomeSala}',(SELECT id_instrutor FROM cadastro_Instrutores WHERE nomeInstrutor = '${nomeInstrutor}'),(SELECT id_curso FROM cadastro_Cursos WHERE nomeCurso = '${nomeCurso}'),(SELECT id_Sala FROM cadastro_Salas WHERE localSala = '${localSala}'),'${anoMesDia}','${horaInicial}','${horaFinal}')`
+    const sql = `INSERT INTO alocacao_De_Salas(id_instrutor,id_curso,id_Sala,anoMesDia,horaInicial,horaFinal) VALUES((SELECT id_instrutor FROM cadastro_Instrutores WHERE nomeInstrutor = '${nomeInstrutor}'),(SELECT id_curso FROM cadastro_Cursos WHERE nomeCurso = '${nomeCurso}'),(SELECT id_Sala FROM cadastro_Salas WHERE localSala = '${localSala}'),'${anoMesDia}','${horaInicial}','${horaFinal}')`
 
     console.log(sql)
 
